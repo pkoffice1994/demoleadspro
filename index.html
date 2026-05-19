@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LeadOS Pro — AI Lead Generation for Indian Businesses</title>
+<title>LeadOS Pro — AI Lead Generation · UK · USA · Canada · India</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -110,10 +110,36 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;height:68px;display:flex;ali
 .spark-bar{background:linear-gradient(180deg,var(--b1),var(--b2));border-radius:2px 2px 0 0;width:8px;opacity:.7}
 
 /* ── MARQUEE ── */
-.marquee-section{padding:20px 0;background:linear-gradient(90deg,var(--bg),var(--bg2),var(--bg));border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden;position:relative;z-index:1}
-.marquee-track{display:flex;gap:0;animation:mq 25s linear infinite}
-.mq-item{display:flex;align-items:center;gap:10px;padding:0 28px;font-size:13px;color:var(--sub);font-weight:500;white-space:nowrap;flex-shrink:0}
-.mq-dot{width:4px;height:4px;border-radius:50%;background:var(--b1);flex-shrink:0}
+.marquee-section{
+  padding:16px 0;
+  background:linear-gradient(90deg,var(--bg),var(--bg2),var(--bg));
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  overflow:hidden;
+  position:relative;
+  z-index:1;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 8%,#000 92%,transparent 100%);
+  mask-image:linear-gradient(90deg,transparent 0%,#000 8%,#000 92%,transparent 100%);
+}
+.marquee-track{
+  display:flex;
+  flex-wrap:nowrap;
+  width:max-content;
+  animation:mq 35s linear infinite;
+}
+.marquee-track:hover{animation-play-state:paused}
+.mq-item{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:0 24px;
+  font-size:13px;
+  color:var(--sub);
+  font-weight:500;
+  white-space:nowrap;
+  flex-shrink:0;
+}
+.mq-dot{width:4px;height:4px;border-radius:50%;background:var(--b1);flex-shrink:0;display:inline-block}
 @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* ── SECTIONS ── */
@@ -245,6 +271,31 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:56px 48p
 .ft-bottom{border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
 .ft-bottom p{font-size:12px;color:var(--sub)}
 
+/* ── PRICING ── */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start}
+.price-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:32px 28px;position:relative;transition:all .25s;overflow:hidden}
+.price-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent)}
+.price-card:hover{border-color:var(--border2);transform:translateY(-4px);box-shadow:0 24px 48px rgba(0,0,0,.3)}
+.price-card-featured{background:linear-gradient(160deg,rgba(91,141,255,.1),rgba(139,92,246,.07));border-color:rgba(91,141,255,.35);transform:translateY(-8px);box-shadow:0 32px 64px rgba(91,141,255,.15)}
+.price-card-featured::before{background:linear-gradient(90deg,transparent,rgba(91,141,255,.5),transparent)}
+.price-card-featured:hover{transform:translateY(-12px)}
+.pc-badge{display:inline-block;background:linear-gradient(135deg,var(--b1),var(--b2));color:#fff;font-size:9px;font-weight:800;letter-spacing:1.5px;padding:3px 10px;border-radius:999px;margin-bottom:18px;text-transform:uppercase}
+.pc-top{margin-bottom:24px}
+.pc-icon{font-size:28px;margin-bottom:12px}
+.pc-name{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;margin-bottom:8px;letter-spacing:-.3px}
+.pc-price{font-family:'Space Grotesk',sans-serif;font-size:38px;font-weight:700;letter-spacing:-1.5px;background:linear-gradient(135deg,var(--b1),var(--b2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.1}
+.pc-price span{font-size:20px;letter-spacing:0}
+.pc-sub{font-size:11px;color:var(--sub);margin-top:6px;font-weight:500}
+.pc-list{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+.pc-list li{font-size:13px;color:var(--sub2);display:flex;align-items:center;gap:9px}
+.pc-check{color:var(--g1);font-size:13px;font-weight:700;flex-shrink:0}
+.pc-btn{width:100%;padding:12px 0;border-radius:11px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:all .2s;border:none}
+.pc-btn-primary{background:linear-gradient(135deg,var(--b1),var(--b2));color:#fff}
+.pc-btn-primary:hover{box-shadow:0 12px 30px rgba(91,141,255,.4);transform:translateY(-1px)}
+.pc-btn-outline{background:transparent;color:var(--text);border:1px solid var(--border2)}
+.pc-btn-outline:hover{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.2)}
+@media(max-width:900px){.pricing-grid{grid-template-columns:1fr}.price-card-featured{transform:none}}
+
 /* ── REVEAL ── */
 .r{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
 .r.v{opacity:1;transform:translateY(0)}
@@ -326,6 +377,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:56px 48p
   <div class="nc">
     <a href="#features">Features</a>
     <a href="#services">Services</a>
+    <a href="#pricing">Pricing</a>
     <a href="#faq">FAQ</a>
   </div>
   <div class="nr">
@@ -341,10 +393,10 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:56px 48p
     <div class="hero-left">
       <div class="hero-chip">
         <span class="hero-chip-badge">NEW</span>
-        <span>AI-Powered · Built for India</span>
+        <span>🌍 Global Leads · UK · USA · Canada · India</span>
       </div>
-      <h1>Find Clients Who<br>Need You <em>Right Now</em></h1>
-      <p class="hero-p">LeadOS Pro discovers small Indian businesses that need your services, scores them by urgency, writes personalized outreach, and tracks every deal — all in one powerful dashboard.</p>
+      <h1>Find Clients Who<br>Need You <em>Worldwide</em></h1>
+      <p class="hero-p">LeadOS Pro discovers businesses across UK 🇬🇧, USA 🇺🇸, Canada 🇨🇦 & India 🇮🇳 that need your services, scores them by urgency, writes personalized outreach, and tracks every deal — all in one powerful dashboard.</p>
       <div class="hero-btns">
         <button class="hbtn-p" onclick="openModal()">🚀 Start Free Trial</button>
         <a href="#features" class="hbtn-s">See Features ↓</a>
@@ -373,8 +425,8 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:56px 48p
         <!-- Float card top right -->
         <div class="float-card fc2">
           <div class="fc-label">LEADS THIS WEEK</div>
-          <div class="fc-val" style="color:var(--b1)">47</div>
-          <div class="fc-sub">↑ 32% vs last week</div>
+          <div class="fc-val" style="color:var(--b1)">84</div>
+          <div class="fc-sub">🇬🇧 🇺🇸 🇨🇦 🇮🇳 · ↑ 68% vs last week</div>
           <div class="fc-sparkline">
             <div class="spark-bar" style="height:40%"></div>
             <div class="spark-bar" style="height:55%"></div>
@@ -389,63 +441,112 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:56px 48p
         <!-- Main dashboard card -->
         <div class="main-card">
           <div class="mc-header">
-            <div class="mc-title">Lead Dashboard</div>
+            <div class="mc-title">🌍 Global Lead Dashboard</div>
             <button class="mc-btn">✨ Generate Leads</button>
           </div>
           <div class="mc-tabs">
-            <div class="mc-tab on">📊 Dashboard</div>
-            <div class="mc-tab">👥 Leads</div>
-            <div class="mc-tab">🔀 Pipeline</div>
-            <div class="mc-tab">✉️ Send</div>
+            <div class="mc-tab on" onclick="filterLeads('all',this)">🌍 All</div>
+            <div class="mc-tab" onclick="filterLeads('uk',this)">🇬🇧 UK</div>
+            <div class="mc-tab" onclick="filterLeads('usa',this)">🇺🇸 USA</div>
+            <div class="mc-tab" onclick="filterLeads('ca',this)">🇨🇦 Canada</div>
           </div>
           <div class="mc-stats">
-            <div class="mcs"><div class="mcs-v" style="color:var(--b1)">47</div><div class="mcs-l">Total Leads</div></div>
-            <div class="mcs"><div class="mcs-v" style="color:var(--g1)">18</div><div class="mcs-l">🔥 Hot</div></div>
-            <div class="mcs"><div class="mcs-v" style="color:#f59e0b">12</div><div class="mcs-l">Contacted</div></div>
-            <div class="mcs"><div class="mcs-v" style="color:var(--b2)">3</div><div class="mcs-l">Converted</div></div>
+            <div class="mcs"><div class="mcs-v" style="color:var(--b1)">84</div><div class="mcs-l">Total Leads</div></div>
+            <div class="mcs"><div class="mcs-v" style="color:var(--g1)">31</div><div class="mcs-l">🔥 Hot</div></div>
+            <div class="mcs"><div class="mcs-v" style="color:#f59e0b">27</div><div class="mcs-l">Contacted</div></div>
+            <div class="mcs"><div class="mcs-v" style="color:var(--b2)">9</div><div class="mcs-l">Converted</div></div>
           </div>
-          <div class="lead-row">
+
+          <!-- UK Leads -->
+          <div class="lead-row" data-country="uk">
             <div class="lr-left">
-              <div class="lr-av" style="background:linear-gradient(135deg,#5b8dff,#8b5cf6)">SC</div>
+              <div class="lr-av" style="background:linear-gradient(135deg,#cf1020,#003078)">BM</div>
               <div>
-                <div class="lr-name">Sunrise Coaching Center</div>
-                <div class="lr-sub">Vikas Gupta · Kota · 📧 vikas@sunrise.in</div>
+                <div class="lr-name">BrightMark Digital</div>
+                <div class="lr-sub">James Patel · London, UK 🇬🇧 · 📧 james@brightmark.co.uk</div>
               </div>
             </div>
             <div class="lr-right">
-              <span class="score-pill" style="background:rgba(6,214,160,.1);color:var(--g1)">🔥 86</span>
+              <span class="score-pill" style="background:rgba(6,214,160,.1);color:var(--g1)">🔥 92</span>
               <span class="st-pill" style="background:rgba(91,141,255,.1);color:var(--b1)">New</span>
               <button class="action-btn">🚀 Send</button>
             </div>
           </div>
-          <div class="lead-row">
+          <div class="lead-row" data-country="uk">
             <div class="lr-left">
-              <div class="lr-av" style="background:linear-gradient(135deg,#06d6a0,#5b8dff)">AA</div>
+              <div class="lr-av" style="background:linear-gradient(135deg,#003078,#cf1020)">NS</div>
               <div>
-                <div class="lr-name">Arjun Auto Parts</div>
-                <div class="lr-sub">Arjun Singh · Delhi · 📧 arjun@autoparts.com</div>
+                <div class="lr-name">NorthStar Consulting</div>
+                <div class="lr-sub">Emma Clarke · Manchester, UK 🇬🇧 · 📧 emma@northstar.co.uk</div>
               </div>
             </div>
             <div class="lr-right">
-              <span class="score-pill" style="background:rgba(6,214,160,.1);color:var(--g1)">🔥 88</span>
+              <span class="score-pill" style="background:rgba(6,214,160,.1);color:var(--g1)">🔥 87</span>
               <span class="st-pill" style="background:rgba(245,158,11,.1);color:#f59e0b">Contacted</span>
               <button class="action-btn">✉️ View</button>
             </div>
           </div>
-          <div class="lead-row">
+
+          <!-- USA Leads -->
+          <div class="lead-row" data-country="usa">
             <div class="lr-left">
-              <div class="lr-av" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">RS</div>
+              <div class="lr-av" style="background:linear-gradient(135deg,#b22234,#3c3b6e)">PV</div>
               <div>
-                <div class="lr-name">Renu Sarees</div>
-                <div class="lr-sub">Renu Sharma · Jaipur · 📧 renu@sarees.com</div>
+                <div class="lr-name">PeakVenture LLC</div>
+                <div class="lr-sub">Mike Rodriguez · New York, USA 🇺🇸 · 📧 mike@peakventure.com</div>
               </div>
             </div>
             <div class="lr-right">
-              <span class="score-pill" style="background:rgba(6,214,160,.1);color:var(--g1)">🔥 85</span>
+              <span class="score-pill" style="background:rgba(6,214,160,.1);color:var(--g1)">🔥 95</span>
+              <span class="st-pill" style="background:rgba(91,141,255,.1);color:var(--b1)">New</span>
+              <button class="action-btn">🚀 Send</button>
+            </div>
+          </div>
+          <div class="lead-row" data-country="usa">
+            <div class="lr-left">
+              <div class="lr-av" style="background:linear-gradient(135deg,#3c3b6e,#b22234)">ST</div>
+              <div>
+                <div class="lr-name">SwiftTech Solutions</div>
+                <div class="lr-sub">Sarah Thompson · Austin, USA 🇺🇸 · 📧 sarah@swifttech.io</div>
+              </div>
+            </div>
+            <div class="lr-right">
+              <span class="score-pill" style="background:rgba(6,214,160,.1);color:var(--g1)">🔥 89</span>
               <span class="st-pill" style="background:rgba(139,92,246,.1);color:var(--b2)">Replied</span>
               <button class="action-btn">📋 Copy</button>
             </div>
           </div>
+
+          <!-- Canada Leads -->
+          <div class="lead-row" data-country="ca">
+            <div class="lr-left">
+              <div class="lr-av" style="background:linear-gradient(135deg,#ff0000,#ffffff,#ff0000)">MG</div>
+              <div>
+                <div class="lr-name">Maple Growth Agency</div>
+                <div class="lr-sub">Priya Sharma · Toronto, Canada 🇨🇦 · 📧 priya@maplegrowth.ca</div>
+              </div>
+            </div>
+            <div class="lr-right">
+              <span class="score-pill" style="background:rgba(6,214,160,.1);color:var(--g1)">🔥 91</span>
+              <span class="st-pill" style="background:rgba(91,141,255,.1);color:var(--b1)">New</span>
+              <button class="action-btn">🚀 Send</button>
+            </div>
+          </div>
+          <div class="lead-row" data-country="ca">
+            <div class="lr-left">
+              <div class="lr-av" style="background:linear-gradient(135deg,#d80000,#a00000)">NV</div>
+              <div>
+                <div class="lr-name">NorthView Media</div>
+                <div class="lr-sub">Liam Chen · Vancouver, Canada 🇨🇦 · 📧 liam@northviewmedia.ca</div>
+              </div>
+            </div>
+            <div class="lr-right">
+              <span class="score-pill" style="background:rgba(245,158,11,.1);color:#f59e0b">⚡ 78</span>
+              <span class="st-pill" style="background:rgba(245,158,11,.1);color:#f59e0b">Contacted</span>
+              <button class="action-btn">✉️ View</button>
+            </div>
+          </div>
+
         </div>
 
         <!-- Float card bottom left -->
@@ -463,6 +564,10 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:56px 48p
 <!-- MARQUEE -->
 <div class="marquee-section">
   <div class="marquee-track">
+    <div class="mq-item"><span class="mq-dot"></span>🇬🇧 UK Leads</div>
+    <div class="mq-item"><span class="mq-dot"></span>🇺🇸 USA Leads</div>
+    <div class="mq-item"><span class="mq-dot"></span>🇨🇦 Canada Leads</div>
+    <div class="mq-item"><span class="mq-dot"></span>🇮🇳 India Leads</div>
     <div class="mq-item"><span class="mq-dot"></span>Digital Marketing & SEO</div>
     <div class="mq-item"><span class="mq-dot"></span>Web Development</div>
     <div class="mq-item"><span class="mq-dot"></span>AI Automation</div>
@@ -472,6 +577,20 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:56px 48p
     <div class="mq-item"><span class="mq-dot"></span>Business Consulting</div>
     <div class="mq-item"><span class="mq-dot"></span>Accounting & Finance</div>
     <div class="mq-item"><span class="mq-dot"></span>HR & Staffing</div>
+    <div class="mq-item"><span class="mq-dot"></span>🇬🇧 UK Leads</div>
+    <div class="mq-item"><span class="mq-dot"></span>🇺🇸 USA Leads</div>
+    <div class="mq-item"><span class="mq-dot"></span>🇨🇦 Canada Leads</div>
+    <div class="mq-item"><span class="mq-dot"></span>🇮🇳 India Leads</div>
+    <div class="mq-item"><span class="mq-dot"></span>Digital Marketing & SEO</div>
+    <div class="mq-item"><span class="mq-dot"></span>Web Development</div>
+    <div class="mq-item"><span class="mq-dot"></span>AI Automation</div>
+    <div class="mq-item"><span class="mq-dot"></span>WhatsApp Chatbot</div>
+    <div class="mq-item"><span class="mq-dot"></span>Agentic AI Systems</div>
+    <div class="mq-item"><span class="mq-dot"></span>SaaS Tools</div>
+    <div class="mq-item"><span class="mq-dot"></span>Business Consulting</div>
+    <div class="mq-item"><span class="mq-dot"></span>Accounting & Finance</div>
+    <div class="mq-item"><span class="mq-dot"></span>HR & Staffing</div>
+  </div>
     <div class="mq-item"><span class="mq-dot"></span>Lead Generation</div>
     <div class="mq-item"><span class="mq-dot"></span>Sales Automation</div>
     <div class="mq-item"><span class="mq-dot"></span>Pan India Coverage</div>
@@ -633,6 +752,80 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:56px 48p
   </div>
 </section>
 
+<!-- PRICING -->
+<section class="sec" id="pricing">
+  <div class="con">
+    <div class="r" style="text-align:center;margin-bottom:56px">
+      <div class="sec-eyebrow">PRICING</div>
+      <h2 class="sec-h">Simple, Transparent <em>Pricing</em></h2>
+      <p class="sec-p" style="margin:0 auto;text-align:center">One-time investment. No hidden charges. Built for Indian agencies & businesses.</p>
+    </div>
+    <div class="pricing-grid r">
+
+      <!-- Starter -->
+      <div class="price-card">
+        <div class="pc-top">
+          <div class="pc-icon">🚀</div>
+          <div class="pc-name">Starter</div>
+          <div class="pc-price">₹45,000<span>+</span></div>
+          <div class="pc-sub">One-time · Perfect to launch fast</div>
+        </div>
+        <ul class="pc-list">
+          <li><span class="pc-check">✓</span> Landing Website</li>
+          <li><span class="pc-check">✓</span> Basic Lead Collection</li>
+          <li><span class="pc-check">✓</span> Contact Forms</li>
+          <li><span class="pc-check">✓</span> Cloud Deployment</li>
+          <li><span class="pc-check">✓</span> Basic Automation</li>
+        </ul>
+        <button class="pc-btn pc-btn-outline" onclick="openModal()">Get Started →</button>
+      </div>
+
+      <!-- Professional (Featured) -->
+      <div class="price-card price-card-featured">
+        <div class="pc-badge">MOST POPULAR</div>
+        <div class="pc-top">
+          <div class="pc-icon">⚡</div>
+          <div class="pc-name">Professional</div>
+          <div class="pc-price">₹85,000<span>+</span></div>
+          <div class="pc-sub">One-time · For serious growth</div>
+        </div>
+        <ul class="pc-list">
+          <li><span class="pc-check">✓</span> Advanced Lead Generation</li>
+          <li><span class="pc-check">✓</span> Apollo / API Integrations</li>
+          <li><span class="pc-check">✓</span> Admin Dashboard</li>
+          <li><span class="pc-check">✓</span> Lead Management System</li>
+          <li><span class="pc-check">✓</span> Email Automation</li>
+          <li><span class="pc-check">✓</span> Database Setup</li>
+          <li><span class="pc-check">✓</span> Analytics & Reporting</li>
+        </ul>
+        <button class="pc-btn pc-btn-primary" onclick="openModal()">Start Free Trial →</button>
+      </div>
+
+      <!-- Enterprise -->
+      <div class="price-card">
+        <div class="pc-top">
+          <div class="pc-icon">🏢</div>
+          <div class="pc-name">Enterprise</div>
+          <div class="pc-price">₹1.5L<span> – ₹5L+</span></div>
+          <div class="pc-sub">Custom scope · Full SaaS build</div>
+        </div>
+        <ul class="pc-list">
+          <li><span class="pc-check">✓</span> Full SaaS Development</li>
+          <li><span class="pc-check">✓</span> AI-Based Lead Filtering</li>
+          <li><span class="pc-check">✓</span> CRM Integration</li>
+          <li><span class="pc-check">✓</span> Multi-User Dashboard</li>
+          <li><span class="pc-check">✓</span> Automation Pipelines</li>
+          <li><span class="pc-check">✓</span> Cloud Infrastructure</li>
+          <li><span class="pc-check">✓</span> Ongoing Maintenance & Scaling</li>
+        </ul>
+        <button class="pc-btn pc-btn-outline" onclick="openModal()">Talk to Us →</button>
+      </div>
+
+    </div>
+    <p class="r" style="text-align:center;margin-top:32px;font-size:13px;color:var(--sub)">All packages include a free consultation call. &nbsp;·&nbsp; <a href="https://wa.me/918504980839" target="_blank" style="color:var(--b1);text-decoration:none">💬 WhatsApp us for custom quotes</a></p>
+  </div>
+</section>
+
 <!-- FAQ -->
 <section class="sec" id="faq">
   <div class="con">
@@ -674,12 +867,12 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:56px 48p
   <div class="cta-box r">
     <div class="cta-glow"></div>
     <h2>Start Finding Real Clients<br><em>Today — Free</em></h2>
-    <p>14-day full access. Zero setup fee. Your first leads in 48 hours.</p>
+    <p>14-day full access. Your first leads in 48 hours.</p>
     <div class="cta-btns">
       <button class="hbtn-p" onclick="openModal()">🚀 Start Free Trial Now</button>
       <a href="https://wa.me/918504980839" target="_blank" class="hbtn-s">💬 WhatsApp Us</a>
     </div>
-    <p class="cta-note"><span>✓</span> No credit card &nbsp;&nbsp; <span>✓</span> Cancel anytime &nbsp;&nbsp; <span>✓</span> Setup in 48hrs</p>
+    <p class="cta-note"><span>✓</span> No credit card &nbsp;&nbsp; <span>✓</span> Cancel anytime &nbsp;&nbsp; <span>✓</span> Setup in 48hrs &nbsp;&nbsp; <span>✓</span> UK · USA · Canada · India</p>
   </div>
 </section>
 
@@ -824,6 +1017,19 @@ function setFeat(el,idx){
   el.classList.add('active');
   document.getElementById('fp-label').textContent=featData[idx].label;
   document.getElementById('fp-screen').innerHTML=featData[idx].html;
+}
+
+/* Country Lead Filter */
+function filterLeads(country, tabEl) {
+  document.querySelectorAll('.mc-tab').forEach(t => t.classList.remove('on'));
+  tabEl.classList.add('on');
+  document.querySelectorAll('.lead-row[data-country]').forEach(row => {
+    if (country === 'all' || row.dataset.country === country) {
+      row.style.display = 'flex';
+    } else {
+      row.style.display = 'none';
+    }
+  });
 }
 
 /* Nav scroll effect */
