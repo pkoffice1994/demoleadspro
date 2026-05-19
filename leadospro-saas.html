@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LeadOS Pro — AI Lead Generation for Indian Businesses</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#020409;
+  --bg2:#06080f;
+  --bg3:#090d18;
+  --card:#0d1120;
+  --card2:#111829;
+  --border:rgba(255,255,255,.06);
+  --border2:rgba(255,255,255,.1);
+  --b1:#5b8dff;
+  --b2:#8b5cf6;
+  --g1:#06d6a0;
+  --o1:#ff6b6b;
+  --y1:#ffd166;
+  --text:#eef2ff;
+  --sub:#8892b0;
+  --sub2:#a8b2d8;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;overflow-x:hidden}
+
+/* ── GLOW BG ── */
+.bg-orb{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0}
+.orb1{width:700px;height:700px;background:radial-gradient(circle,rgba(91,141,255,.12),transparent 70%);top:-200px;left:50%;transform:translateX(-50%)}
+.orb2{width:500px;height:500px;background:radial-gradient(circle,rgba(139,92,246,.08),transparent 70%);top:60%;right:-100px}
+.orb3{width:400px;height:400px;background:radial-gradient(circle,rgba(6,214,160,.06),transparent 70%);bottom:10%;left:-50px}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:999;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;background:rgba(2,4,9,.6);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nl{display:flex;align-items:center;gap:10px}
+.nl-icon{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--b1),var(--b2));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;color:#fff;font-family:'Space Grotesk',sans-serif}
+.nl-txt{font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700;letter-spacing:-.3px}
+.nl-txt b{color:var(--b1)}
+.nc{display:flex;gap:32px}
+.nc a{color:var(--sub);font-size:14px;font-weight:500;text-decoration:none;transition:color .2s}
+.nc a:hover{color:var(--text)}
+.nr{display:flex;gap:10px;align-items:center}
+.nbtn{background:linear-gradient(135deg,var(--b1),var(--b2));color:#fff;border:none;padding:9px 22px;border-radius:9px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:all .2s;letter-spacing:.1px}
+.nbtn:hover{transform:translateY(-1px);box-shadow:0 8px 28px rgba(91,141,255,.35)}
+.nlink{color:var(--sub2);font-size:14px;text-decoration:none;padding:8px 14px;border-radius:8px;transition:all .2s}
+.nlink:hover{background:rgba(255,255,255,.04);color:var(--text)}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:100px 48px 60px;position:relative;overflow:hidden}
+.hero-inner{max-width:1100px;width:100%;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.hero-left{position:relative;z-index:1}
+.hero-chip{display:inline-flex;align-items:center;gap:8px;background:rgba(91,141,255,.08);border:1px solid rgba(91,141,255,.2);border-radius:999px;padding:5px 14px 5px 6px;margin-bottom:28px}
+.hero-chip-badge{background:linear-gradient(135deg,var(--b1),var(--b2));color:#fff;font-size:10px;font-weight:800;padding:2px 9px;border-radius:999px;letter-spacing:.5px}
+.hero-chip span{font-size:12px;color:var(--b1);font-weight:500}
+.hero h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(36px,4vw,58px);font-weight:700;line-height:1.08;letter-spacing:-2px;margin-bottom:22px}
+.hero h1 em{font-style:normal;background:linear-gradient(135deg,var(--b1),var(--b2),#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-p{font-size:16px;color:var(--sub2);line-height:1.75;margin-bottom:36px;font-weight:300;max-width:480px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:44px}
+.hbtn-p{background:linear-gradient(135deg,var(--b1),var(--b2));color:#fff;border:none;padding:14px 30px;border-radius:11px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:all .25s;display:inline-flex;align-items:center;gap:8px}
+.hbtn-p:hover{transform:translateY(-2px);box-shadow:0 16px 44px rgba(91,141,255,.4)}
+.hbtn-s{background:transparent;color:var(--text);border:1px solid var(--border2);padding:14px 28px;border-radius:11px;font-size:15px;font-weight:500;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:all .2s;display:inline-flex;align-items:center;gap:8px;text-decoration:none}
+.hbtn-s:hover{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.18)}
+.hero-trust{display:flex;align-items:center;gap:12px}
+.trust-avatars{display:flex}
+.ta{width:30px;height:30px;border-radius:50%;border:2px solid var(--bg);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;margin-left:-8px}
+.ta:first-child{margin-left:0}
+.trust-txt{font-size:12px;color:var(--sub)}
+.trust-txt b{color:var(--text);font-weight:600}
+
+/* ── HERO RIGHT (CARD STACK) ── */
+.hero-right{position:relative;z-index:1}
+.card-stack{position:relative;width:100%}
+.main-card{background:var(--card);border:1px solid var(--border2);border-radius:20px;padding:22px;box-shadow:0 40px 80px rgba(0,0,0,.5),0 0 0 1px rgba(91,141,255,.08);position:relative;overflow:hidden}
+.main-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(91,141,255,.4),transparent)}
+.mc-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.mc-title{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600}
+.mc-btn{background:linear-gradient(135deg,var(--b1),var(--b2));color:#fff;font-size:11px;font-weight:700;padding:5px 12px;border-radius:7px;border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif}
+.mc-tabs{display:flex;gap:3px;background:rgba(255,255,255,.04);padding:3px;border-radius:8px;margin-bottom:16px;width:fit-content}
+.mc-tab{padding:4px 12px;font-size:11px;font-weight:600;border-radius:6px;cursor:pointer;color:var(--sub);transition:all .2s}
+.mc-tab.on{background:var(--b1);color:#fff}
+.mc-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px}
+.mcs{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;padding:10px 8px;text-align:center}
+.mcs-v{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700}
+.mcs-l{font-size:9px;color:var(--sub);margin-top:2px;font-weight:500}
+.lead-row{background:rgba(255,255,255,.025);border:1px solid var(--border);border-radius:10px;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;transition:all .2s}
+.lead-row:hover{background:rgba(255,255,255,.04);border-color:var(--border2)}
+.lr-left{display:flex;align-items:center;gap:10px}
+.lr-av{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#fff;flex-shrink:0}
+.lr-name{font-size:12px;font-weight:600}
+.lr-sub{font-size:10px;color:var(--sub);margin-top:1px}
+.lr-right{display:flex;align-items:center;gap:6px;flex-shrink:0}
+.score-pill{font-size:10px;font-weight:700;padding:2px 8px;border-radius:999px}
+.st-pill{font-size:9px;font-weight:700;padding:2px 7px;border-radius:5px}
+.action-btn{font-size:9px;font-weight:600;padding:3px 9px;border-radius:6px;background:rgba(255,255,255,.06);border:1px solid var(--border);color:var(--sub2);cursor:pointer;transition:all .2s}
+.action-btn:hover{background:var(--b1);color:#fff;border-color:var(--b1)}
+
+/* floating mini cards */
+.float-card{position:absolute;background:var(--card2);border:1px solid var(--border2);border-radius:14px;padding:12px 16px;box-shadow:0 20px 40px rgba(0,0,0,.4)}
+.fc1{bottom:-24px;left:-28px;min-width:160px}
+.fc2{top:-20px;right:-20px;min-width:150px}
+.fc-label{font-size:10px;color:var(--sub);font-weight:500;margin-bottom:6px}
+.fc-val{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700}
+.fc-sub{font-size:10px;color:var(--sub);margin-top:2px}
+.fc-bar{height:4px;border-radius:2px;margin-top:8px;background:rgba(255,255,255,.06)}
+.fc-bar-fill{height:4px;border-radius:2px;background:linear-gradient(90deg,var(--b1),var(--b2))}
+.fc-sparkline{display:flex;align-items:flex-end;gap:3px;height:28px}
+.spark-bar{background:linear-gradient(180deg,var(--b1),var(--b2));border-radius:2px 2px 0 0;width:8px;opacity:.7}
+
+/* ── MARQUEE ── */
+.marquee-section{padding:20px 0;background:linear-gradient(90deg,var(--bg),var(--bg2),var(--bg));border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden;position:relative;z-index:1}
+.marquee-track{display:flex;gap:0;animation:mq 25s linear infinite}
+.mq-item{display:flex;align-items:center;gap:10px;padding:0 28px;font-size:13px;color:var(--sub);font-weight:500;white-space:nowrap;flex-shrink:0}
+.mq-dot{width:4px;height:4px;border-radius:50%;background:var(--b1);flex-shrink:0}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── SECTIONS ── */
+.sec{padding:88px 48px;position:relative;z-index:1}
+.con{max-width:1100px;margin:0 auto}
+.sec-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;color:var(--b1);letter-spacing:2px;text-transform:uppercase;margin-bottom:14px}
+.sec-eyebrow::before{content:'';width:16px;height:1.5px;background:var(--b1);border-radius:2px}
+.sec-h{font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,3.5vw,44px);font-weight:700;letter-spacing:-1.5px;line-height:1.1;margin-bottom:14px}
+.sec-h em{font-style:normal;background:linear-gradient(135deg,var(--b1),var(--b2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.sec-p{font-size:16px;color:var(--sub2);max-width:500px;line-height:1.7;font-weight:300}
+
+/* ── FEATURES ── */
+.feat-layout{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:56px;align-items:start}
+.feat-list{display:flex;flex-direction:column;gap:6px}
+.feat-item{display:flex;align-items:flex-start;gap:16px;padding:18px 20px;border-radius:14px;border:1px solid transparent;cursor:pointer;transition:all .25s}
+.feat-item.active,.feat-item:hover{background:rgba(91,141,255,.05);border-color:rgba(91,141,255,.15)}
+.feat-item.active{border-color:rgba(91,141,255,.25);background:rgba(91,141,255,.07)}
+.fi-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;background:rgba(255,255,255,.04);border:1px solid var(--border)}
+.feat-item.active .fi-icon{background:rgba(91,141,255,.12);border-color:rgba(91,141,255,.3)}
+.fi-txt h3{font-size:14px;font-weight:700;margin-bottom:4px}
+.fi-txt p{font-size:13px;color:var(--sub2);line-height:1.6}
+.feat-preview{background:var(--card);border:1px solid var(--border2);border-radius:20px;padding:28px;position:sticky;top:100px;box-shadow:0 30px 60px rgba(0,0,0,.3)}
+.fp-label{font-size:11px;font-weight:700;color:var(--b1);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px}
+.fp-screen{background:var(--bg3);border-radius:12px;padding:16px;border:1px solid var(--border)}
+
+/* pipeline preview */
+.pipe-cols{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.pipe-col-h{font-size:9px;font-weight:700;text-align:center;padding:4px 6px;border-radius:5px;margin-bottom:6px}
+.pipe-card{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:7px;padding:7px 8px;margin-bottom:5px}
+.pipe-card-n{font-size:10px;font-weight:600;margin-bottom:2px}
+.pipe-card-s{font-size:9px;color:var(--sub)}
+
+/* score preview */
+.score-bars{display:flex;flex-direction:column;gap:10px}
+.sb-row{display:flex;align-items:center;gap:10px}
+.sb-name{font-size:11px;font-weight:500;width:120px;flex-shrink:0}
+.sb-track{flex:1;height:6px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden}
+.sb-fill{height:6px;border-radius:3px;transition:width 1s ease}
+.sb-score{font-size:11px;font-weight:700;width:28px;text-align:right;flex-shrink:0}
+
+/* outreach preview */
+.outreach-card{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;padding:14px}
+.oc-subject{font-size:12px;font-weight:700;margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.oc-body{font-size:11px;color:var(--sub2);line-height:1.7}
+.oc-actions{display:flex;gap:8px;margin-top:12px}
+.oc-btn{font-size:10px;font-weight:700;padding:5px 12px;border-radius:7px;border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif}
+
+/* ── SERVICES GRID ── */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:52px}
+.svc-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;transition:all .25s;position:relative;overflow:hidden;cursor:default}
+.svc-card::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(91,141,255,.05),transparent);opacity:0;transition:opacity .25s}
+.svc-card:hover{border-color:var(--border2);transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.3)}
+.svc-card:hover::after{opacity:1}
+.svc-num{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;color:var(--b1);background:rgba(91,141,255,.1);border:1px solid rgba(91,141,255,.2);padding:2px 8px;border-radius:5px;display:inline-block;margin-bottom:14px}
+.svc-card h3{font-size:15px;font-weight:700;margin-bottom:7px;letter-spacing:-.2px}
+.svc-card p{font-size:12px;color:var(--sub2);line-height:1.6}
+.svc-icon{font-size:24px;margin-bottom:12px}
+
+/* ── STATS STRIP ── */
+.stats-strip{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:36px 48px;position:relative;z-index:1}
+.ss-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative}
+.ss-inner::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent,transparent calc(20% - 1px),var(--border) calc(20% - 1px),var(--border) 20%);pointer-events:none}
+.ss-item{text-align:center;padding:12px 0}
+.ss-num{font-family:'Space Grotesk',sans-serif;font-size:36px;font-weight:700;letter-spacing:-1px;background:linear-gradient(135deg,var(--b1),var(--b2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.ss-lbl{font-size:12px;color:var(--sub);margin-top:4px;font-weight:400}
+
+/* ── FAQ ── */
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:52px;align-items:start}
+.faq-left h3{font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;letter-spacing:-1px;line-height:1.2;margin-bottom:14px}
+.faq-left p{font-size:14px;color:var(--sub2);line-height:1.7;margin-bottom:24px}
+.faq-cta{background:linear-gradient(135deg,var(--b1),var(--b2));color:#fff;border:none;padding:12px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:all .2s}
+.faq-cta:hover{box-shadow:0 8px 24px rgba(91,141,255,.35)}
+.faq-items{display:flex;flex-direction:column;gap:8px}
+.faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.faq-item.open{border-color:rgba(91,141,255,.25)}
+.faq-q{padding:16px 20px;font-size:14px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px;transition:all .2s}
+.faq-q:hover{color:var(--b1)}
+.faq-item.open .faq-q{color:var(--b1)}
+.fq-arr{width:24px;height:24px;border-radius:6px;background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--sub);transition:all .2s;flex-shrink:0}
+.faq-item.open .fq-arr{background:rgba(91,141,255,.15);color:var(--b1);transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.faq-item.open .faq-a{max-height:150px}
+.faq-a-in{padding:0 20px 16px;font-size:13px;color:var(--sub2);line-height:1.7}
+
+/* ── CTA ── */
+.cta-sec{padding:88px 48px;position:relative;z-index:1}
+.cta-box{max-width:800px;margin:0 auto;text-align:center;position:relative}
+.cta-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:300px;background:radial-gradient(ellipse,rgba(91,141,255,.12),transparent 70%);pointer-events:none}
+.cta-box h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(32px,4.5vw,54px);font-weight:700;letter-spacing:-2px;line-height:1.05;margin-bottom:18px;position:relative}
+.cta-box p{font-size:16px;color:var(--sub2);margin-bottom:36px;font-weight:300;position:relative}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;position:relative}
+.cta-note{margin-top:18px;font-size:12px;color:var(--sub);position:relative}
+.cta-note span{color:var(--g1)}
+
+/* ── MODAL ── */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(12px);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .3s}
+.modal-overlay.show{opacity:1;pointer-events:all}
+.modal{background:var(--card);border:1px solid var(--border2);border-radius:22px;padding:36px;max-width:480px;width:100%;transform:scale(.95) translateY(10px);transition:all .3s;position:relative;box-shadow:0 40px 80px rgba(0,0,0,.5)}
+.modal-overlay.show .modal{transform:scale(1) translateY(0)}
+.modal::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(91,141,255,.5),transparent);border-radius:22px 22px 0 0}
+.m-close{position:absolute;top:14px;right:16px;background:rgba(255,255,255,.06);border:none;width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;color:var(--sub);transition:all .2s}
+.m-close:hover{background:rgba(255,255,255,.1);color:var(--text)}
+.modal h2{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;letter-spacing:-.5px;margin-bottom:6px}
+.modal-sub{font-size:13px;color:var(--sub2);margin-bottom:24px;line-height:1.5}
+.fg{margin-bottom:14px}
+.fg label{font-size:11px;font-weight:700;color:var(--sub);letter-spacing:1px;text-transform:uppercase;display:block;margin-bottom:5px}
+.fg input,.fg select,.fg textarea{width:100%;padding:10px 13px;background:rgba(255,255,255,.04);border:1px solid var(--border2);border-radius:9px;color:var(--text);font-size:13px;font-family:'Plus Jakarta Sans',sans-serif;transition:border .2s}
+.fg input:focus,.fg select:focus,.fg textarea:focus{outline:none;border-color:var(--b1);background:rgba(91,141,255,.05)}
+.fg select{background:rgba(255,255,255,.04) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%238892b0' d='M5 7L0 2h10z'/%3E%3C/svg%3E") no-repeat right 12px center;cursor:pointer}
+.fg textarea{min-height:80px;resize:vertical;line-height:1.6}
+.m-submit{width:100%;padding:13px 0;background:linear-gradient(135deg,var(--b1),var(--b2));color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;margin-top:4px;transition:all .2s;letter-spacing:.2px}
+.m-submit:hover{box-shadow:0 10px 28px rgba(91,141,255,.4)}
+.m-success{text-align:center;padding:24px 0}
+.m-success .emoji{font-size:52px;margin-bottom:16px}
+.m-success h3{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;margin-bottom:8px}
+.m-success p{font-size:13px;color:var(--sub2);line-height:1.6}
+
+/* ── FOOTER ── */
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:56px 48px 32px;position:relative;z-index:1}
+.ft-inner{max-width:1100px;margin:0 auto}
+.ft-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px}
+.ft-brand p{font-size:13px;color:var(--sub);line-height:1.65;margin-top:12px;max-width:260px}
+.ft-social{display:flex;gap:8px;margin-top:20px}
+.fs-btn{width:36px;height:36px;border-radius:9px;background:rgba(255,255,255,.04);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:15px;text-decoration:none;transition:all .2s}
+.fs-btn:hover{background:rgba(91,141,255,.1);border-color:rgba(91,141,255,.3)}
+.ft-col h4{font-size:11px;font-weight:700;color:var(--sub);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px}
+.ft-col a{display:block;font-size:13px;color:var(--sub2);text-decoration:none;margin-bottom:8px;transition:color .2s}
+.ft-col a:hover{color:var(--text)}
+.ft-bottom{border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.ft-bottom p{font-size:12px;color:var(--sub)}
+
+/* ── REVEAL ── */
+.r{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
+.r.v{opacity:1;transform:translateY(0)}
+.r.d1{transition-delay:.1s}
+.r.d2{transition-delay:.2s}
+.r.d3{transition-delay:.3s}
+
+/* ── MOBILE ── */
+@media(max-width:900px){
+  nav{padding:0 20px}
+  .nc{display:none}
+  .hero{padding:90px 20px 60px}
+  .hero-inner{grid-template-columns:1fr;gap:40px}
+  .hero-right{display:none}
+  .sec{padding:60px 20px}
+  .feat-layout{grid-template-columns:1fr}
+  .feat-preview{display:none}
+  .svc-grid{grid-template-columns:1fr 1fr}
+  .stats-strip{padding:28px 20px}
+  .ss-inner{grid-template-columns:1fr 1fr;gap:20px}
+  .ss-inner::before{display:none}
+  .faq-grid{grid-template-columns:1fr}
+  .cta-sec{padding:60px 20px}
+  .ft-top{grid-template-columns:1fr 1fr}
+  footer{padding:40px 20px 24px}
+}
+@media(max-width:560px){
+  .svc-grid{grid-template-columns:1fr}
+  .hero h1{letter-spacing:-1.5px}
+}
+</style>
+</head>
+<body>
+
+<!-- BG ORBS -->
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+<div class="bg-orb orb3"></div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <button class="m-close" onclick="closeModal()">✕</button>
+    <div id="mf">
+      <h2>Get Free Access 🚀</h2>
+      <p class="modal-sub">14-day full access — no credit card. We'll set everything up within 24 hours and deliver your first leads.</p>
+      <div class="fg"><label>Full Name</label><input type="text" placeholder="Pawan Kumar Jain"></div>
+      <div class="fg"><label>WhatsApp Number</label><input type="tel" placeholder="+91 98765 43210"></div>
+      <div class="fg"><label>Business Type</label>
+        <select>
+          <option>Select your business</option>
+          <option>Digital Marketing Agency</option>
+          <option>Web Development Agency</option>
+          <option>Business Consultant</option>
+          <option>IT Services</option>
+          <option>Accounting / Finance Firm</option>
+          <option>HR / Staffing Agency</option>
+          <option>AI / Automation Agency</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="fg"><label>Biggest Challenge Right Now</label><textarea placeholder="e.g. I can't find enough clients for my agency..."></textarea></div>
+      <button class="m-submit" onclick="submitModal()">Start Free Trial — No Card Needed →</button>
+    </div>
+    <div id="ms" style="display:none" class="m-success">
+      <div class="emoji">🎉</div>
+      <h3>You're In!</h3>
+      <p>We'll WhatsApp you within 2 hours to set up your LeadOS Pro account. Your first leads will be ready today.</p>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nl">
+    <div class="nl-icon">L</div>
+    <div class="nl-txt">Lead<b>OS</b> Pro</div>
+  </div>
+  <div class="nc">
+    <a href="#features">Features</a>
+    <a href="#services">Services</a>
+    <a href="#faq">FAQ</a>
+  </div>
+  <div class="nr">
+    <a href="#" class="nlink">Sign in</a>
+    <button class="nbtn" onclick="openModal()">Start Free Trial →</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-chip">
+        <span class="hero-chip-badge">NEW</span>
+        <span>AI-Powered · Built for India</span>
+      </div>
+      <h1>Find Clients Who<br>Need You <em>Right Now</em></h1>
+      <p class="hero-p">LeadOS Pro discovers small Indian businesses that need your services, scores them by urgency, writes personalized outreach, and tracks every deal — all in one powerful dashboard.</p>
+      <div class="hero-btns">
+        <button class="hbtn-p" onclick="openModal()">🚀 Start Free Trial</button>
+        <a href="#features" class="hbtn-s">See Features ↓</a>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-avatars">
+          <div class="ta" style="background:linear-gradient(135deg,#5b8dff,#8b5cf6)">P</div>
+          <div class="ta" style="background:linear-gradient(135deg,#06d6a0,#5b8dff)">R</div>
+          <div class="ta" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">A</div>
+          <div class="ta" style="background:linear-gradient(135deg,#8b5cf6,#ec4899)">S</div>
+        </div>
+        <p class="trust-txt"><b>50+ agencies</b> already growing with LeadOS Pro</p>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="card-stack">
+        <!-- Float card top right -->
+        <div class="float-card fc2">
+          <div class="fc-label">LEADS THIS WEEK</div>
+          <div class="fc-val" style="color:var(--b1)">47</div>
+          <div class="fc-sub">↑ 32% vs last week</div>
+          <div class="fc-sparkline">
+            <div class="spark-bar" style="height:40%"></div>
+            <div class="spark-bar" style="height:55%"></div>
+            <div class="spark-bar" style="height:45%"></div>
+            <div class="spark-bar" style="height:70%"></div>
+            <div class="spark-bar" style="height:60%"></div>
+            <div class="spark-bar" style="height:85%"></div>
+            <div class="spark-bar" style="height:100%"></div>
+          </div>
+        </div>
+
+        <!-- Main dashboard card -->
+        <div class="main-card">
+          <div class="mc-header">
+            <div class="mc-title">Lead Dashboard</div>
+            <button class="mc-btn">✨ Generate Leads</button>
+          </div>
+          <div class="mc-tabs">
+            <div class="mc-tab on">📊 Dashboard</div>
+            <div class="mc-tab">👥 Leads</div>
+            <div class="mc-tab">🔀 Pipeline</div>
+            <div class="mc-tab">✉️ Send</div>
+          </div>
+          <div class="mc-stats">
+            <div class="mcs"><div class="mcs-v" style="color:var(--b1)">47</div><div class="mcs-l">Total Leads</div></div>
+            <div class="mcs"><div class="mcs-v" style="color:var(--g1)">18</div><div class="mcs-l">🔥 Hot</div></div>
+            <div class="mcs"><div class="mcs-v" style="color:#f59e0b">12</div><div class="mcs-l">Contacted</div></div>
+            <div class="mcs"><div class="mcs-v" style="color:var(--b2)">3</div><div class="mcs-l">Converted</div></div>
+          </div>
+          <div class="lead-row">
+            <div class="lr-left">
+              <div class="lr-av" style="background:linear-gradient(135deg,#5b8dff,#8b5cf6)">SC</div>
+              <div>
+                <div class="lr-name">Sunrise Coaching Center</div>
+                <div class="lr-sub">Vikas Gupta · Kota · 📧 vikas@sunrise.in</div>
+              </div>
+            </div>
+            <div class="lr-right">
+              <span class="score-pill" style="background:rgba(6,214,160,.1);color:var(--g1)">🔥 86</span>
+              <span class="st-pill" style="background:rgba(91,141,255,.1);color:var(--b1)">New</span>
+              <button class="action-btn">🚀 Send</button>
+            </div>
+          </div>
+          <div class="lead-row">
+            <div class="lr-left">
+              <div class="lr-av" style="background:linear-gradient(135deg,#06d6a0,#5b8dff)">AA</div>
+              <div>
+                <div class="lr-name">Arjun Auto Parts</div>
+                <div class="lr-sub">Arjun Singh · Delhi · 📧 arjun@autoparts.com</div>
+              </div>
+            </div>
+            <div class="lr-right">
+              <span class="score-pill" style="background:rgba(6,214,160,.1);color:var(--g1)">🔥 88</span>
+              <span class="st-pill" style="background:rgba(245,158,11,.1);color:#f59e0b">Contacted</span>
+              <button class="action-btn">✉️ View</button>
+            </div>
+          </div>
+          <div class="lead-row">
+            <div class="lr-left">
+              <div class="lr-av" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">RS</div>
+              <div>
+                <div class="lr-name">Renu Sarees</div>
+                <div class="lr-sub">Renu Sharma · Jaipur · 📧 renu@sarees.com</div>
+              </div>
+            </div>
+            <div class="lr-right">
+              <span class="score-pill" style="background:rgba(6,214,160,.1);color:var(--g1)">🔥 85</span>
+              <span class="st-pill" style="background:rgba(139,92,246,.1);color:var(--b2)">Replied</span>
+              <button class="action-btn">📋 Copy</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Float card bottom left -->
+        <div class="float-card fc1">
+          <div class="fc-label">CONVERSION RATE</div>
+          <div class="fc-val" style="color:var(--g1)">24%</div>
+          <div class="fc-sub">↑ 3x industry avg</div>
+          <div class="fc-bar"><div class="fc-bar-fill" style="width:24%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <div class="mq-item"><span class="mq-dot"></span>Digital Marketing & SEO</div>
+    <div class="mq-item"><span class="mq-dot"></span>Web Development</div>
+    <div class="mq-item"><span class="mq-dot"></span>AI Automation</div>
+    <div class="mq-item"><span class="mq-dot"></span>WhatsApp Chatbot</div>
+    <div class="mq-item"><span class="mq-dot"></span>Agentic AI Systems</div>
+    <div class="mq-item"><span class="mq-dot"></span>SaaS Tools</div>
+    <div class="mq-item"><span class="mq-dot"></span>Business Consulting</div>
+    <div class="mq-item"><span class="mq-dot"></span>Accounting & Finance</div>
+    <div class="mq-item"><span class="mq-dot"></span>HR & Staffing</div>
+    <div class="mq-item"><span class="mq-dot"></span>Lead Generation</div>
+    <div class="mq-item"><span class="mq-dot"></span>Sales Automation</div>
+    <div class="mq-item"><span class="mq-dot"></span>Pan India Coverage</div>
+    <!-- duplicate -->
+    <div class="mq-item"><span class="mq-dot"></span>Digital Marketing & SEO</div>
+    <div class="mq-item"><span class="mq-dot"></span>Web Development</div>
+    <div class="mq-item"><span class="mq-dot"></span>AI Automation</div>
+    <div class="mq-item"><span class="mq-dot"></span>WhatsApp Chatbot</div>
+    <div class="mq-item"><span class="mq-dot"></span>Agentic AI Systems</div>
+    <div class="mq-item"><span class="mq-dot"></span>SaaS Tools</div>
+    <div class="mq-item"><span class="mq-dot"></span>Business Consulting</div>
+    <div class="mq-item"><span class="mq-dot"></span>Accounting & Finance</div>
+    <div class="mq-item"><span class="mq-dot"></span>HR & Staffing</div>
+    <div class="mq-item"><span class="mq-dot"></span>Lead Generation</div>
+    <div class="mq-item"><span class="mq-dot"></span>Sales Automation</div>
+    <div class="mq-item"><span class="mq-dot"></span>Pan India Coverage</div>
+  </div>
+</div>
+
+<!-- STATS STRIP -->
+<div class="stats-strip r">
+  <div class="ss-inner">
+    <div class="ss-item"><div class="ss-num">16+</div><div class="ss-lbl">Business Categories</div></div>
+    <div class="ss-item"><div class="ss-num">9</div><div class="ss-lbl">Services Covered</div></div>
+    <div class="ss-item"><div class="ss-num">48hr</div><div class="ss-lbl">Setup Time</div></div>
+    <div class="ss-item"><div class="ss-num">3x</div><div class="ss-lbl">Avg Conversion Lift</div></div>
+    <div class="ss-item"><div class="ss-num">₹0</div><div class="ss-lbl">Setup Fee</div></div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section class="sec" id="features">
+  <div class="con">
+    <div class="r">
+      <div class="sec-eyebrow">Core Features</div>
+      <h2 class="sec-h">Everything to Close<br><em>More Deals Faster</em></h2>
+      <p class="sec-p">A complete system — from discovering prospects to sending emails and tracking every deal in real time.</p>
+    </div>
+    <div class="feat-layout r d1">
+      <div class="feat-list">
+        <div class="feat-item active" onclick="setFeat(this,0)">
+          <div class="fi-icon">🎯</div>
+          <div class="fi-txt">
+            <h3>AI Lead Scoring</h3>
+            <p>Every lead scored 0–100 by pain point match, budget signals, and urgency. Focus only on leads that convert.</p>
+          </div>
+        </div>
+        <div class="feat-item" onclick="setFeat(this,1)">
+          <div class="fi-icon">🔀</div>
+          <div class="fi-txt">
+            <h3>Visual Pipeline</h3>
+            <p>Track every lead from New → Contacted → Replied → Converted. Never lose track of a deal again.</p>
+          </div>
+        </div>
+        <div class="feat-item" onclick="setFeat(this,2)">
+          <div class="fi-icon">✉️</div>
+          <div class="fi-txt">
+            <h3>Auto-Written Outreach</h3>
+            <p>Personalized emails written for every lead based on their exact pain point. Just review and send.</p>
+          </div>
+        </div>
+        <div class="feat-item" onclick="setFeat(this,3)">
+          <div class="fi-icon">🌐</div>
+          <div class="fi-txt">
+            <h3>Website + LinkedIn on Every Lead</h3>
+            <p>Research every prospect before reaching out. No cold calling blindly ever again.</p>
+          </div>
+        </div>
+        <div class="feat-item" onclick="setFeat(this,4)">
+          <div class="fi-icon">📧</div>
+          <div class="fi-txt">
+            <h3>One-Click Gmail Send</h3>
+            <p>Opens Gmail with subject and body pre-filled. Just click Send and move to the next lead.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="feat-preview">
+        <div class="fp-label" id="fp-label">AI Lead Scoring</div>
+        <div class="fp-screen" id="fp-screen">
+          <div class="score-bars">
+            <div class="sb-row"><span class="sb-name">Arjun Auto Parts</span><div class="sb-track"><div class="sb-fill" style="width:88%;background:linear-gradient(90deg,#5b8dff,#8b5cf6)"></div></div><span class="sb-score" style="color:#06d6a0">88</span></div>
+            <div class="sb-row"><span class="sb-name">Sunrise Coaching</span><div class="sb-track"><div class="sb-fill" style="width:86%;background:linear-gradient(90deg,#5b8dff,#8b5cf6)"></div></div><span class="sb-score" style="color:#06d6a0">86</span></div>
+            <div class="sb-row"><span class="sb-name">Renu Sarees</span><div class="sb-track"><div class="sb-fill" style="width:85%;background:linear-gradient(90deg,#5b8dff,#8b5cf6)"></div></div><span class="sb-score" style="color:#06d6a0">85</span></div>
+            <div class="sb-row"><span class="sb-name">Mehta Dental</span><div class="sb-track"><div class="sb-fill" style="width:80%;background:linear-gradient(90deg,#06d6a0,#5b8dff)"></div></div><span class="sb-score" style="color:#f59e0b">80</span></div>
+            <div class="sb-row"><span class="sb-name">Kapoor Textiles</span><div class="sb-track"><div class="sb-fill" style="width:74%;background:linear-gradient(90deg,#f59e0b,#ef4444)"></div></div><span class="sb-score" style="color:#f59e0b">74</span></div>
+            <div class="sb-row"><span class="sb-name">Bloom Flowers</span><div class="sb-track"><div class="sb-fill" style="width:70%;background:linear-gradient(90deg,#f59e0b,#ef4444)"></div></div><span class="sb-score" style="color:#f59e0b">70</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="sec" id="services" style="background:var(--bg2)">
+  <div class="con">
+    <div class="r">
+      <div class="sec-eyebrow">9 Services</div>
+      <h2 class="sec-h">Leads for Every Service<br><em>You Offer</em></h2>
+      <p class="sec-p">Filter leads by exactly which service you're pitching. Right lead, right offer, every time.</p>
+    </div>
+    <div class="svc-grid r d1">
+      <div class="svc-card">
+        <div class="svc-icon">📈</div>
+        <div class="svc-num">01</div>
+        <h3>Digital Marketing & SEO</h3>
+        <p>Small businesses with no Google presence or burning money on ads with zero strategy.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">💻</div>
+        <div class="svc-num">02</div>
+        <h3>Web Development & IT</h3>
+        <p>Businesses selling via Instagram DMs with no proper website or booking system.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🤖</div>
+        <div class="svc-num">03</div>
+        <h3>AI Automation</h3>
+        <p>Owners spending 3+ hours daily on tasks that AI could handle in seconds automatically.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">💬</div>
+        <div class="svc-num">04</div>
+        <h3>WhatsApp Chatbot</h3>
+        <p>Businesses getting 50+ daily WhatsApp enquiries they physically can't keep up with.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🧠</div>
+        <div class="svc-num">05</div>
+        <h3>Agentic AI Systems</h3>
+        <p>Companies with 100+ leads needing automatic follow-up, qualification, and booking.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">📦</div>
+        <div class="svc-num">06</div>
+        <h3>SaaS Tools</h3>
+        <p>B2B businesses still managing orders in WhatsApp and billing in Excel spreadsheets.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🎯</div>
+        <div class="svc-num">07</div>
+        <h3>Business Consulting</h3>
+        <p>Growing businesses stuck because everything runs through the owner personally.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">💰</div>
+        <div class="svc-num">08</div>
+        <h3>Accounting & Finance</h3>
+        <p>Small businesses with GST stress, mixed accounts, and no bookkeeping system.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">👥</div>
+        <div class="svc-num">09</div>
+        <h3>HR & Staffing</h3>
+        <p>Companies with high employee turnover and no structured hiring or onboarding.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec" id="faq">
+  <div class="con">
+    <div class="faq-grid r">
+      <div class="faq-left">
+        <div class="sec-eyebrow">FAQ</div>
+        <h3>Got Questions?<br>We've Got Answers.</h3>
+        <p>Can't find what you're looking for? WhatsApp us directly — we reply within 2 hours.</p>
+        <button class="faq-cta" onclick="openModal()">Talk to Us →</button>
+      </div>
+      <div class="faq-items">
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q">Are the leads real verified Indian contacts? <span class="fq-arr">+</span></div>
+          <div class="faq-a"><div class="faq-a-in">The demo includes sample leads to show the system. Real verified data connects via Apollo.io API — 100% confirmed emails and phone numbers for Indian businesses.</div></div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q">How quickly can I start getting leads? <span class="fq-arr">+</span></div>
+          <div class="faq-a"><div class="faq-a-in">Setup takes 48 hours. Your first batch of leads will be ready the same day setup is complete. Most clients send their first outreach emails within 24 hours of going live.</div></div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q">Can my agency use this to find clients? <span class="fq-arr">+</span></div>
+          <div class="faq-a"><div class="faq-a-in">Absolutely — LeadOS Pro is built for agencies, consultants, and service providers looking for small Indian businesses that need their services. Filter by service, city, and company size.</div></div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q">Does it work on mobile? <span class="fq-arr">+</span></div>
+          <div class="faq-a"><div class="faq-a-in">Yes — fully responsive on all devices. Manage leads, send emails, and track your pipeline from your phone anywhere in India.</div></div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q">Can I white-label this for my agency? <span class="fq-arr">+</span></div>
+          <div class="faq-a"><div class="faq-a-in">Yes — white-label rights available. Deploy LeadOS Pro under your own brand name and sell it to your clients as your own product. Contact us for white-label pricing.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-sec">
+  <div class="cta-box r">
+    <div class="cta-glow"></div>
+    <h2>Start Finding Real Clients<br><em>Today — Free</em></h2>
+    <p>14-day full access. Zero setup fee. Your first leads in 48 hours.</p>
+    <div class="cta-btns">
+      <button class="hbtn-p" onclick="openModal()">🚀 Start Free Trial Now</button>
+      <a href="https://wa.me/91XXXXXXXXXX" class="hbtn-s">💬 WhatsApp Us</a>
+    </div>
+    <p class="cta-note"><span>✓</span> No credit card &nbsp;&nbsp; <span>✓</span> Cancel anytime &nbsp;&nbsp; <span>✓</span> Setup in 48hrs</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-inner">
+    <div class="ft-top">
+      <div class="ft-brand">
+        <div class="nl" style="margin-bottom:0">
+          <div class="nl-icon">L</div>
+          <div class="nl-txt">Lead<b>OS</b> Pro</div>
+        </div>
+        <p>AI-powered lead generation for small Indian businesses. Find leads, send outreach, close deals — one dashboard.</p>
+        <div class="ft-social">
+          <a href="#" class="fs-btn">💼</a>
+          <a href="#" class="fs-btn">💬</a>
+          <a href="#" class="fs-btn">📧</a>
+        </div>
+      </div>
+      <div class="ft-col">
+        <h4>Product</h4>
+        <a href="#features">Features</a>
+        <a href="#services">Services</a>
+        <a href="#faq">FAQ</a>
+        <a href="#" onclick="openModal();return false">Free Trial</a>
+      </div>
+      <div class="ft-col">
+        <h4>Services</h4>
+        <a href="#">Digital Marketing</a>
+        <a href="#">Web Development</a>
+        <a href="#">AI Automation</a>
+        <a href="#">WhatsApp Chatbot</a>
+        <a href="#">Agentic AI</a>
+      </div>
+      <div class="ft-col">
+        <h4>Contact</h4>
+        <a href="#">pawan@leadospro.in</a>
+        <a href="#">+91 XXXXX XXXXX</a>
+        <a href="#" onclick="openModal();return false">Book Free Call</a>
+        <a href="#">Pan India · Remote</a>
+      </div>
+    </div>
+    <div class="ft-bottom">
+      <p>© 2025 LeadOS Pro · Pawan Kumar Jain · All rights reserved</p>
+      <p>Built with ❤️ for Indian small businesses</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Reveal on scroll */
+const obs=new IntersectionObserver(e=>e.forEach(i=>{if(i.isIntersecting)i.target.classList.add('v')}),{threshold:.08});
+document.querySelectorAll('.r').forEach(el=>obs.observe(el));
+
+/* Modal */
+function openModal(){document.getElementById('modal').classList.add('show')}
+function closeModal(){document.getElementById('modal').classList.remove('show')}
+document.getElementById('modal').addEventListener('click',e=>{if(e.target===document.getElementById('modal'))closeModal()});
+function submitModal(){
+  document.getElementById('mf').style.display='none';
+  document.getElementById('ms').style.display='block';
+  setTimeout(closeModal,4000);
+}
+
+/* FAQ */
+function toggleFaq(el){
+  const open=el.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(f=>f.classList.remove('open'));
+  if(!open)el.classList.add('open');
+}
+
+/* Feature tabs */
+const featData=[
+  {
+    label:'AI Lead Scoring',
+    html:`<div style="display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;align-items:center;gap:10px"><span style="font-size:11px;font-weight:500;width:120px;flex-shrink:0;color:var(--sub2)">Arjun Auto Parts</span><div style="flex:1;height:6px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden"><div style="height:6px;width:88%;border-radius:3px;background:linear-gradient(90deg,#5b8dff,#8b5cf6)"></div></div><span style="font-size:11px;font-weight:700;width:28px;text-align:right;color:#06d6a0">88</span></div>
+      <div style="display:flex;align-items:center;gap:10px"><span style="font-size:11px;font-weight:500;width:120px;flex-shrink:0;color:var(--sub2)">Sunrise Coaching</span><div style="flex:1;height:6px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden"><div style="height:6px;width:86%;border-radius:3px;background:linear-gradient(90deg,#5b8dff,#8b5cf6)"></div></div><span style="font-size:11px;font-weight:700;width:28px;text-align:right;color:#06d6a0">86</span></div>
+      <div style="display:flex;align-items:center;gap:10px"><span style="font-size:11px;font-weight:500;width:120px;flex-shrink:0;color:var(--sub2)">Renu Sarees</span><div style="flex:1;height:6px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden"><div style="height:6px;width:85%;border-radius:3px;background:linear-gradient(90deg,#5b8dff,#8b5cf6)"></div></div><span style="font-size:11px;font-weight:700;width:28px;text-align:right;color:#06d6a0">85</span></div>
+      <div style="display:flex;align-items:center;gap:10px"><span style="font-size:11px;font-weight:500;width:120px;flex-shrink:0;color:var(--sub2)">Mehta Dental</span><div style="flex:1;height:6px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden"><div style="height:6px;width:80%;border-radius:3px;background:linear-gradient(90deg,#06d6a0,#5b8dff)"></div></div><span style="font-size:11px;font-weight:700;width:28px;text-align:right;color:#f59e0b">80</span></div>
+      <div style="display:flex;align-items:center;gap:10px"><span style="font-size:11px;font-weight:500;width:120px;flex-shrink:0;color:var(--sub2)">Kapoor Textiles</span><div style="flex:1;height:6px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden"><div style="height:6px;width:74%;border-radius:3px;background:linear-gradient(90deg,#f59e0b,#ef4444)"></div></div><span style="font-size:11px;font-weight:700;width:28px;text-align:right;color:#f59e0b">74</span></div>
+    </div>`
+  },
+  {
+    label:'Visual Pipeline',
+    html:`<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:6px">
+      ${[['New','#5b8dff',2],['Contacted','#f59e0b',3],['Replied','#8b5cf6',1],['Converted','#06d6a0',1],['Lost','#ef4444',0]].map(([s,c,n])=>`
+      <div>
+        <div style="font-size:9px;font-weight:700;text-align:center;padding:4px 2px;border-radius:5px;background:${c}18;color:${c};margin-bottom:5px">${s} ${n}</div>
+        ${Array(n).fill(0).map(()=>`<div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:6px;padding:6px 7px;margin-bottom:4px"><div style="font-size:9px;font-weight:600;margin-bottom:2px">Lead</div><div style="font-size:8px;color:var(--sub)">Small biz · India</div></div>`).join('')}
+        ${n===0?`<div style="border:1px dashed rgba(255,255,255,.06);border-radius:6px;padding:12px 4px;text-align:center;font-size:9px;color:var(--sub)">Empty</div>`:''}
+      </div>`).join('')}
+    </div>`
+  },
+  {
+    label:'Auto-Written Outreach',
+    html:`<div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:14px">
+      <div style="font-size:10px;color:var(--sub);font-weight:600;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">Subject Line</div>
+      <div style="font-size:12px;font-weight:700;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.06)">Arjun Auto Parts — automate 80% of WhatsApp enquiries</div>
+      <div style="font-size:11px;color:var(--sub2);line-height:1.7">Hi Arjun,<br><br>Handling 80+ WhatsApp enquiries per day manually means responses get delayed and customers go to competitors...<br><br>We build WhatsApp AI chatbots that reply instantly 24/7.</div>
+      <div style="display:flex;gap:8px;margin-top:12px">
+        <button style="font-size:10px;font-weight:700;padding:5px 12px;border-radius:7px;background:linear-gradient(135deg,#5b8dff,#8b5cf6);color:#fff;border:none;cursor:pointer">📧 Gmail</button>
+        <button style="font-size:10px;font-weight:600;padding:5px 12px;border-radius:7px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);color:var(--sub2);cursor:pointer">📋 Copy</button>
+      </div>
+    </div>`
+  },
+  {
+    label:'Website + LinkedIn',
+    html:`<div style="display:flex;flex-direction:column;gap:10px">
+      ${[['SC','#5b8dff,#8b5cf6','Sunrise Coaching Center','Vikas Gupta','sunrisecoaching.in'],['AA','#06d6a0,#5b8dff','Arjun Auto Parts','Arjun Singh','arjunautoparts.com'],['RS','#f59e0b,#ef4444','Renu Sarees','Renu Sharma','renusarees.com']].map(([av,g,name,person,web])=>`
+      <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:12px;display:flex;align-items:center;justify-content:space-between;gap:10px">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:28px;height:28px;border-radius:7px;background:linear-gradient(135deg,${g});display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#fff;flex-shrink:0">${av}</div>
+          <div><div style="font-size:11px;font-weight:700">${name}</div><div style="font-size:10px;color:var(--sub)">${person}</div></div>
+        </div>
+        <div style="display:flex;gap:6px">
+          <a href="https://${web}" target="_blank" style="font-size:9px;font-weight:700;padding:3px 8px;border-radius:5px;background:rgba(91,141,255,.1);color:#5b8dff;text-decoration:none;border:1px solid rgba(91,141,255,.2)">🌐 Web</a>
+          <a href="#" style="font-size:9px;font-weight:700;padding:3px 8px;border-radius:5px;background:rgba(6,214,160,.1);color:#06d6a0;text-decoration:none;border:1px solid rgba(6,214,160,.2)">💼 LinkedIn</a>
+        </div>
+      </div>`).join('')}
+    </div>`
+  },
+  {
+    label:'One-Click Gmail',
+    html:`<div style="text-align:center;padding:20px 10px">
+      <div style="font-size:40px;margin-bottom:14px">📧</div>
+      <div style="font-size:13px;font-weight:700;margin-bottom:8px">Opens Gmail with everything pre-filled</div>
+      <div style="font-size:12px;color:var(--sub2);margin-bottom:20px;line-height:1.6">Subject line, email body, and recipient address — all automatically filled in. You just click Send.</div>
+      <div style="background:rgba(91,141,255,.08);border:1px solid rgba(91,141,255,.2);border-radius:10px;padding:12px;font-size:11px;color:var(--sub2);margin-bottom:14px">
+        <div style="font-weight:700;color:var(--text);margin-bottom:4px">To: arjun@arjunautoparts.com</div>
+        <div style="color:var(--sub)">Subject: Arjun Auto Parts — automate 80% of WhatsApp enquiries</div>
+      </div>
+      <button style="background:linear-gradient(135deg,#5b8dff,#8b5cf6);color:#fff;border:none;padding:10px 24px;border-radius:9px;font-size:13px;font-weight:700;cursor:pointer;width:100%">📧 Open in Gmail →</button>
+    </div>`
+  }
+];
+
+function setFeat(el,idx){
+  document.querySelectorAll('.feat-item').forEach(f=>f.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('fp-label').textContent=featData[idx].label;
+  document.getElementById('fp-screen').innerHTML=featData[idx].html;
+}
+
+/* Nav scroll effect */
+window.addEventListener('scroll',()=>{
+  const nav=document.querySelector('nav');
+  nav.style.background=window.scrollY>50?'rgba(2,4,9,.92)':'rgba(2,4,9,.6)';
+});
+</script>
+</body>
+</html>
